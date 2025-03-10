@@ -15,28 +15,12 @@
     font-family: "Baligo";
 
 }
-
 .title{
     font-size:36px;
     margin-bottom:10px;
     color:#530343;
 
 
-}
-.progress-container {
-    width: 100%;
-    height: 10px;
-    background-color: #ddd;
-    border-radius: 5px;
-    margin-top: 20px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    width: 0%;
-    height: 100%;
-    background-color: #ff69b4;
-    transition: width 1s linear;
 }
 .timer{
     font-size:72px;
@@ -109,9 +93,6 @@ body{
             <div class="gif-container">
                 <img src="cute-pokemon.gif" alt="GIF" width="300">
             </div>
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
-            </div>
             
             <script>
                 const startE1=document.getElementById("start")
@@ -119,8 +100,7 @@ body{
                 const resetE1=document.getElementById("reset")
                 const timerE1=document.getElementById("timer")
                 let interval ;
-                let totaltime=120;
-                let timeleft = totaltime;
+                let timeleft=120;
 
                 function updateTime(){
                     let minutes=Math.floor(timeleft/60);
@@ -128,10 +108,7 @@ body{
                     let formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
                     timerE1.innerHTML=formattedTime;
-                    let progress = ((totalTime - timeleft) / totalTime) * 100;
-                     progressBar.style.width = `${progress}%`;
-                        }
-                
+                }
                 function startTimer(){
                     interval=setInterval(() => {
                         timeleft--;

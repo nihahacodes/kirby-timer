@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images (2).jpg">
+   
+
+    <head>
+        <title>KIRBY timer</title>
+        <style>
+    .container{
+    margin: 0 auto;
+    max-width: 400px;
+    text-align:center;
+    padding: 20px;
+    font-family: "Baligo";
+
+}
+.title{
+    font-size:36px;
+    margin-bottom:10px;
+    color:#530343;
+
+
+}
+.timer{
+    font-size:72px;
+    color:#530343;
+
+}
+.gif-container{
+    text-align:center;
+    margin-top:50px;
+
+}
+button{
+    font-size:18px;
+    padding:10px 20px;
+    margin:10px;
+    color:white;
+    background-color: #530343;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    text-transform: uppercase;
+    transition:opacity .3 ease-in-out;
+
+}
+.button-wrapper{
+    display: flex;
+            justify-content: center; /* Align buttons horizontally */
+            align-items: center; /* Align buttons vertically */
+            gap: 10px; /* Space between buttons */
+            padding: 20px; /* Space inside the box */
+            border: 3px solid #ed589b; /* Box border */
+            border-radius: 12px; /* Rounded corners */
+            background-color: #ffd1eb; 
+            width: fit-content; 
+            margin: auto;
+            box-shadow: 4px 4px 10px rgba(255, 76, 76, 0.2);
+}
+button:hover{
+    opacity:.7;}
+#start{
+    background-color:#ff68ab;
+}
+#stop{
+    background-color: #f8006e;
+    
+}
+#reset{
+    background-color: #bd145f
+    ;
+}
+body{
+   background-color: #ffd7f2;
+
+
+}
+
+
+        </style>
+        <body>
+            <div class="container">
+                <h1 class="title">POMODORO TIMER</h1>
+                    <p class="timer" id="timer">25:00</p>
+                    <div class="button-wrapper">
+                        <button id="start">START</button>
+                        <button id="stop">STOP</button>
+                        <button id="reset">RESET</button>
+                        
+                    </div>
+            </div>
+            <div class="gif-container">
+                <img src="cute-pokemon.gif" alt="GIF" width="300">
+            </div>
+            
+            <script>
+                const startE1=document.getElementById("start")
+                const stopE1=document.getElementById("stop")
+                const resetE1=document.getElementById("reset")
+                const timerE1=document.getElementById("timer")
+                let interval ;
+                let timeleft=120;
+
+                function updateTime(){
+                    let minutes=Math.floor(timeleft/60);
+                    let seconds=timeleft%60;
+                    let formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+                    timerE1.innerHTML=formattedTime;
+                }
+                function startTimer(){
+                    interval=setInterval(() => {
+                        timeleft--;
+                        updateTime();
+                        if(timeleft==0){
+                            clearInterval(interval);
+                            alert("WUHOO YOU DID IT");
+                            timeleft=1500;
+                        }
+                    }, 1000);
+                }
+                function stopTimer(){
+                    clearInterval(interval);
+
+
+
+                }
+                function resetTimer(){
+                    clearInterval(interval);
+                    timeleft=1500;
+                    updateTime();
+                }
+                startE1.addEventListener("click",startTimer)
+                stopE1.addEventListener("click",stopTimer)
+                resetE1.addEventListener("click",resetTimer)
+                </script>
+
+        </body>
+    </head>
